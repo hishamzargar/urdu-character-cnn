@@ -1,0 +1,32 @@
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment (replace with your env name if different)
+venv/
+pytorch_env/
+env/
+.env
+*.env
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Data files (Exclude dataset - RECOMMENDED)
+data/
+*.npz
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Matplotlib plots or other output files (optional)
+*.png
+*.jpg
