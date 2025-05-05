@@ -5,6 +5,7 @@ __pycache__/
 
 # Virtual environment (replace with your env name if different)
 venv/
+.venv/
 pytorch_env/
 env/
 .env
@@ -27,6 +28,3 @@ data/
 .DS_Store
 Thumbs.db
 
-# Matplotlib plots or other output files (optional)
-*.png
-*.jpg
