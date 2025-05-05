@@ -70,7 +70,7 @@ The breakthrough came with implementing the architecture described in `v3_cnn_pa
 
 **v1/v2 - Typical Overfitting:**
 *(Illustrates the validation loss increasing rapidly after Epoch 1, seen in `v1_basic_nn.py` and `v2_cnn.py` attempts)*
-![Training History Plot for v1/v2 showing overfitting](v1.png)
+![Training History Plot for v1/v2 showing overfitting](v1.jpg)
 
 **v3 - Successful Model:**
 *(Illustrates validation loss decreasing and high validation accuracy achieved by `v3_cnn_paper.py`)*
