@@ -8,7 +8,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras import regularizers
 import numpy as np
-import matplotlib.pyplot as plt # Optional: for visualizing data/results
+import matplotlib.pyplot as plt
 
 print(f"Using TensorFlow version: {tf.__version__}")
 
@@ -138,14 +138,5 @@ plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 
 plt.tight_layout()
+plt.savefig("v1.png")
 plt.show()
-
-# Optional: Make a prediction on a single test image
-# import numpy as np
-# image_index = 0 # Choose an image index from the test set
-# plt.imshow(x_test[image_index].reshape(28, 28), cmap='gray') # Need original test set for plotting
-# pred = model.predict(x_test[image_index:image_index+1]) # Predict needs batch dimension
-# print(f"Predicted probabilities: {pred}")
-# print(f"Predicted label: {np.argmax(pred)}")
-# print(f"True label (one-hot): {y_test[image_index]}")
-# print(f"True label: {np.argmax(y_test[image_index])}")

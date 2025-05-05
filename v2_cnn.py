@@ -160,6 +160,66 @@ history = model.fit(
 
 print("\nTraining Finished.")
 
+print("\n--- Plotting Training History ---")
+
+# Check if history object and necessary keys exist
+required_keys = ['accuracy', 'val_accuracy', 'loss', 'val_loss']
+if hasattr(history, 'history') and all(key in history.history for key in required_keys):
+    acc = history.history['accuracy']
+    val_acc = history.history['val_accuracy']
+    loss = history.history['loss']
+    val_loss = history.history['val_loss']
+
+    # Determine the number of epochs actually run
+    epochs_run = range(1, len(acc) + 1)
+
+    plt.figure(figsize=(14, 6)) # Adjust figure size (width, height)
+
+    # Plot Training & Validation Accuracy
+    plt.subplot(1, 2, 1) # 1 row, 2 columns, 1st plot
+    plt.plot(epochs_run, acc, label='Training Accuracy', marker='o', linestyle='-')
+    plt.plot(epochs_run, val_acc, label='Validation Accuracy', marker='o', linestyle='-')
+    plt.title('Training and Validation Accuracy (v2_simple)') # Added model name
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    # Find the best validation accuracy epoch
+    best_epoch_acc = np.argmax(val_acc) + 1
+    plt.axvline(best_epoch_acc, linestyle='--', color='r', label=f'Best Val Acc (Epoch {best_epoch_acc})')
+    plt.legend(loc='lower right')
+    plt.grid(True)
+
+    # Plot Training & Validation Loss
+    plt.subplot(1, 2, 2) # 1 row, 2 columns, 2nd plot
+    plt.plot(epochs_run, loss, label='Training Loss', marker='o', linestyle='-')
+    plt.plot(epochs_run, val_loss, label='Validation Loss', marker='o', linestyle='-')
+    plt.title('Training and Validation Loss (v2_simple)') # Added model name
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    # Find the best validation loss epoch (usually where EarlyStopping restores from)
+    best_epoch_loss = np.argmin(val_loss) + 1
+    plt.axvline(best_epoch_loss, linestyle='--', color='r', label=f'Best Val Loss (Epoch {best_epoch_loss})')
+    plt.legend(loc='upper right')
+    plt.grid(True)
+
+    plt.suptitle('Model Training History (cnn_v2_simple)', fontsize=16) # Overall title
+    plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Adjust layout
+    # --- Suggestion: Save the plot ---
+    plot_filename = "v2.png"
+    try:
+        plt.savefig(plot_filename)
+        print(f"Plot saved as {plot_filename}")
+    except Exception as e:
+        print(f"Could not save plot: {e}")
+    # --- End Suggestion ---
+    plt.show() # Display the plots
+    print(f"Plots displayed. Best validation loss was at epoch {best_epoch_loss}.")
+
+
+else:
+    print("Could not generate plots. History object might be missing required keys.")
+    if hasattr(history, 'history'):
+        print(f"Keys available in history: {list(history.history.keys())}")
+
 # --- 8. Evaluate the Model ---
 # Evaluation uses the weights restored by EarlyStopping (best val_loss)
 print("\nEvaluating Model on Test Data...")
