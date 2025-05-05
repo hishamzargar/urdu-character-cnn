@@ -36,7 +36,9 @@ This project uses the **UHAT (Urdu Handwritten Text Dataset)**. The dataset file
 
 You can install the required packages using pip:
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt 
+
+```
 
 ## Usage
 
